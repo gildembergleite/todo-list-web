@@ -27,7 +27,7 @@ export default function Home() {
       <Header />
       <main className='flex w-full justify-center items-center'>
         <div className='w-full max-w-3xl'>
-          <InputText />
+          <InputText data={data} onGetData={getData} />
           <CountBar created={createdTasks} concluded={concludedTasks} />
           <ToDoList data={data} listTasks={listTasks} onGetData={getData} />
         </div>

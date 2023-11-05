@@ -1,4 +1,20 @@
-export default function InputText() {
+'use client'
+import DataServices from '@/services/DataServices'
+import { useState } from 'react'
+
+interface InputTaskProps {
+  data: DataServices
+  onGetData: Function
+}
+
+export default function InputText({ data, onGetData }: InputTaskProps) {
+  const [taskDescription, setTaskDescription] = useState('')
+
+  async function handleCreatedNewTask() {
+    await data.addTask(taskDescription)
+    onGetData()
+  }
+
   return (
     <div className="flex w-full space-x-2 -mt-7">
       <input
@@ -7,8 +23,11 @@ export default function InputText() {
         type="text"
         name="task"
         id="task"
+        value={taskDescription}
+        onChange={(e) => setTaskDescription(e.target.value)}
       />
       <button
+        onClick={handleCreatedNewTask}
         className="flex items-center gap-1 font-bold text-sm bg-blue-dark text-gray-100 p-4 rounded-lg hover:bg-blue transition-colors duration-200"
       >
         Criar +
