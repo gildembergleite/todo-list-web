@@ -33,7 +33,7 @@ export default function ListItem({ task, onMarkTaskAsCompleted, onDeleteTask }: 
       </label>
       <button onClick={() => handleDeleteTask(task.id)}>
         <svg
-          className='stroke-gray-300 hover:stroke-danger'
+          className='stroke-gray-300 hover:stroke-danger transition-colors duration-200'
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
