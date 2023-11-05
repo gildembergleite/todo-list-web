@@ -1,15 +1,14 @@
 import { Task } from '../../data'
-import DataServices from '@/services/DataServices'
 
 interface ListItemProps {
-  data: DataServices
+  onMarkTaskAsCompleted: Function
   task: Task
 }
 
-export default function ListItem({ data, task }: ListItemProps) {
+export default function ListItem({ onMarkTaskAsCompleted, task }: ListItemProps) {
 
   async function handleMarkTaskAsCompleted(taskId: number) {
-    await data.markTaskAsCompleted(taskId)
+    onMarkTaskAsCompleted(taskId)
   }
 
   return (

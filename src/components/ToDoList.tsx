@@ -8,11 +8,15 @@ interface ToDoListProps {
 }
 
 export default function ToDoList({ data, listTasks }: ToDoListProps) {
+  async function markTaskAsCompleted(taskId: number) {
+    await data.markTaskAsCompleted(taskId)
+  }
+  
   return (
     <div>
       {
         listTasks.map((task) => (
-          <ListItem key={task.id} data={data} task={task} />
+          <ListItem key={task.id} onMarkTaskAsCompleted={markTaskAsCompleted} task={task} />
         ))
       }
     </div>
