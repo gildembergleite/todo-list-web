@@ -1,20 +1,27 @@
-'use client'
-import { useState } from 'react'
+import { Task } from '../../data'
+import DataServices from '@/services/DataServices'
 
-export default function ListItem() {
-  const description = 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.'
-  const [isCompleted, setIsCompleted] = useState(false)
+interface ListItemProps {
+  data: DataServices
+  task: Task
+}
+
+export default function ListItem({ data, task }: ListItemProps) {
+
+  async function handleMarkTaskAsCompleted(taskId: number) {
+    await data.markTaskAsCompleted(taskId)
+  }
 
   return (
     <div className="flex w-full mb-3 gap-3 items-center p-4 rounded-lg bg-gray-500 border border-gray-400">
       <input
-        onChange={() => setIsCompleted(!isCompleted)}
+        onChange={() => handleMarkTaskAsCompleted(task.id)}
         type="checkbox"
         name="checkTask"
         id="checkTask"
       />
-      <p className={`flex-1 ${isCompleted ? 'line-through text-gray-300' : 'text-gray-100'}`}>
-        {description}
+      <p className={`flex-1 ${task.isCompleted ? 'line-through text-gray-300' : 'text-gray-100'}`}>
+        {task.description}
       </p>
       <button>
         <svg
