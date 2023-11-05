@@ -12,7 +12,8 @@ export default function InputText({ data, onGetData }: InputTaskProps) {
 
   async function handleCreatedNewTask() {
     await data.addTask(taskDescription)
-    onGetData()
+    await onGetData()
+    setTaskDescription('')
   }
 
   return (
