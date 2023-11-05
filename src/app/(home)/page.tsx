@@ -10,6 +10,8 @@ import { Task } from '../../../data'
 export default function Home() {
   const data = new DataServices()
   const [listTasks, setListTasks] = useState<Task[]>([])
+  const createdTasks = listTasks.length
+  const concludedTasks = listTasks.filter((task) => task.isCompleted === true).length
 
   useEffect(() => {
     getData()
@@ -26,7 +28,7 @@ export default function Home() {
       <main className='flex w-full justify-center items-center'>
         <div className='w-full max-w-3xl'>
           <InputText />
-          <CountBar />
+          <CountBar created={createdTasks} concluded={concludedTasks} />
           <ToDoList data={data} listTasks={listTasks} onGetData={getData} />
         </div>
       </main>
