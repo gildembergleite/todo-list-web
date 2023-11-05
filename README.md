@@ -47,3 +47,11 @@ npm run dev
 # ou
 yarn dev
 ```
+
+## Contribuindo
+
+Sinta-se à vontade para contribuir com melhorias ou reportar problemas por meio de issues.
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
