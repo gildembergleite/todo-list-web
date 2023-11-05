@@ -5,7 +5,11 @@ export default function Home() {
   return (
     <>
       <Header />
-      <InputText />
+      <main className='flex w-full justify-center items-center'>
+        <div className='w-full max-w-3xl'>
+          <InputText />
+        </div>
+      </main>
     </>
   )
 }
