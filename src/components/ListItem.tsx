@@ -1,14 +1,19 @@
 import { Task } from '../../data'
 
 interface ListItemProps {
-  onMarkTaskAsCompleted: Function
   task: Task
+  onMarkTaskAsCompleted: Function
+  onDeleteTask: Function
 }
 
-export default function ListItem({ onMarkTaskAsCompleted, task }: ListItemProps) {
+export default function ListItem({ task, onMarkTaskAsCompleted, onDeleteTask }: ListItemProps) {
 
   async function handleMarkTaskAsCompleted(taskId: number) {
     onMarkTaskAsCompleted(taskId)
+  }
+
+  async function handleDeleteTask(taskId: number) {
+    await onDeleteTask(taskId)
   }
 
   return (
@@ -22,7 +27,7 @@ export default function ListItem({ onMarkTaskAsCompleted, task }: ListItemProps)
       <p className={`flex-1 ${task.isCompleted ? 'line-through text-gray-300' : 'text-gray-100'}`}>
         {task.description}
       </p>
-      <button>
+      <button onClick={() => handleDeleteTask(task.id)}>
         <svg
           className='stroke-gray-300 hover:stroke-danger'
           xmlns="http://www.w3.org/2000/svg"

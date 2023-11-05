@@ -27,7 +27,7 @@ export default function Home() {
         <div className='w-full max-w-3xl'>
           <InputText />
           <CountBar />
-          <ToDoList data={data} listTasks={listTasks} />
+          <ToDoList data={data} listTasks={listTasks} onGetData={getData} />
         </div>
       </main>
     </>
