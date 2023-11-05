@@ -20,13 +20,17 @@ export default function ListItem({ task, onMarkTaskAsCompleted, onDeleteTask }: 
     <div className="flex w-full mb-3 gap-3 items-center p-4 rounded-lg bg-gray-500 border border-gray-400">
       <input
         onChange={() => handleMarkTaskAsCompleted(task.id)}
+        className={`
+          h-4 w-4 bg-transparent border-2 border-blue hover:border-blue-dark rounded-full cursor-pointer outline-none focus:ring-transparent focus:ring-offset-transparent transition-all duration-200
+          ${task.isCompleted ? 'text-purple-dark' : ''}
+        `}
         type="checkbox"
         name="checkTask"
         id="checkTask"
       />
-      <p className={`flex-1 ${task.isCompleted ? 'line-through text-gray-300' : 'text-gray-100'}`}>
+      <label htmlFor='checkTask' className={`flex-1 ${task.isCompleted ? 'line-through text-gray-300' : 'text-gray-100'}`}>
         {task.description}
-      </p>
+      </label>
       <button onClick={() => handleDeleteTask(task.id)}>
         <svg
           className='stroke-gray-300 hover:stroke-danger'
