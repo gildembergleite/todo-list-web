@@ -35,6 +35,7 @@
             "never"
         ],
         "react/react-in-jsx-scope": "off",
-        "@typescript-eslint/ban-types": "off"
+        "@typescript-eslint/ban-types": "off",
+        "react/no-unknown-property": "warn"
     }
 }
